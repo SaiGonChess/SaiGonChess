@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SAIGONCHESS.NET</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no">
+		<link rel="shortcut icon" type="image/x-icon" href="./swphone/favicon.ico" />
+		<link rel="stylesheet" href="./swphone/style.min-1.1.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+		<meta property="og:url" content="https://saigonchess.net">
+		<meta property="og:image" content="https://saigonchess.net/swphone/bg.jpg">
+		<meta property="og:image:alt" content="https://saigonchess.net/swphone/bg.jpg">
+		<meta property="og:type" content="article"/>
+		<meta property="og:image:type" content="image/jpeg"/>
+		<meta property="og:title" content="SAIGONCHESS.NET"/>
+		<meta property="og:description" content="Phần mềm Cờ tướng bản quyền trên nền Web">
+
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background-attachment: fixed;
+            color: #e5e5e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 100%;
+            max-width: 1200px; /* Increased from 300px */
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 20px; /* Added margin-bottom */
+        }
+
+        .main-block {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .middle-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .left-side {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 20px;
+        }
+
+        .right-side {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px 20px; /* Increased padding */
+            margin-bottom: 15px; /* Increased margin */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px; /* Increased font size */
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .green-button { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+        .red-button { background: linear-gradient(45deg, #c0392b, #e74c3c); }
+        .pika-button { background: linear-gradient(45deg, #f39c12, #f1c40f); }
+
+        .button-text {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .button img {
+            width: 24px; /* Increased icon size */
+            height: 24px;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+
+        .footer-logo img {
+            width: 200px;
+            height: auto;
+			border-radius: 5px;
+            display: block;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background-color: #000;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-container .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background-color: #FF0000; /* Màu đỏ của YouTube */
+            border-radius: 14%;
+            cursor: pointer;
+			transition: all 0.3s ease;
+        }
+		 .video-container .play-button:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-style: solid;
+            border-width: 10px 0 10px 20px;
+            border-color: transparent transparent transparent white;
+        }
+
+        .video-container .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+			box-shadow:
+			0 0 10px #ff0000,
+			0 0 20px #ff6b6b,
+			0 0 30px #ffc0cb,
+			0 0 40px #ff0000;
+        }
+
+		.ktqg-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 2px;
+            vertical-align: middle;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .contact-info p {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .phone-icon {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .middle-block {
+                flex-direction: column;
+            }
+
+            .left-side, .right-side {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .header img {
+                max-width: 600px; /* Adjust for smaller screens */
+            }
+
+            .button {
+                padding: 12px 15px; /* Slightly smaller on mobile */
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./swphone/logo.gif" alt="SAIGONCHESS.NET Logo">
+        </div>
+        <main class="main-block">
+            <marquee behavior="scroll" direction="left" style="color: white;">Cập nhật mới: Giao diện tự động điều chỉnh kích thước phù hợp trên mọi thiết bị. Phiên bản mới nhất nâng cao tốc độ xử lý. Ổn định điểm số, nâng cao khả năng xử lý tốt các hình cờ phức tạp!</marquee>
+
+            <div class="middle-block">
+                <div class="left-side">
+                    <h2>Phần mềm cờ tướng bản quyền trên nền web:</h2>
+                    <ul>
+                        <li>Chạy được trên tất cả nền tảng máy tính, điện thoại, máy tính bảng...</li>
+                        <li>Giao diện và ký hiệu nước đi bằng tiếng Việt.</li>
+                        <li>Dễ sử dụng, dễ học, và thử thách giúp bạn phát triển kỹ năng.</li>
+                        <li>Khai cuộc đúc kết từ kiến thức cờ tướng được kiểm chứng bởi những dàn máy Server cực mạnh.</li>
+                        <li>Kết nối dữ liệu đám mây.</li>
+                        <li>Bộ não tính toán được trang bị kỹ thuật trí tuệ nhân tạo hiện đại nhất (AlphaZero, An Efficiently Updatable Neural Network)</li>
+                    </ul>
+
+                    <div class="video-container" data-yt-url="https://www.youtube.com/embed/HHXGKXgL7fM">
+                        <div class="play-button"></div>
+                    </div>
+
+                    <h3>Thông tin chi tiết liên lạc:</h3>
+                    <div class="contact-info">
+                        <p>
+                            <span class="ktqg-badge">KTQG</span>
+                            Trần Quyết Thắng
+                            <span class="phone-icon">📞</span>
+                            0919.789.389
+                        </p>
+                    </div>
+
+                    <h3>Hỗ trợ kỹ thuật:</h3>
+                    <div class="contact-info">
+                        <p>Mr Thiện <span class="phone-icon">📞</span> 0934.571.206</p>
+                    </div>
+                    <div class="contact-info">
+                        <p>Mr Lộc <span class="phone-icon">📞</span> 0983.817.680</p>
+                    </div>
+
+                    <h3>Nhóm phát triển ứng dụng:</h3>
+                    <p>Phạm Hữu Thiện<br>
+                    Phạm Xuân Lộc</p>
+                </div>
+
+                <div class="right-side">
+                    <button class="button green-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=saigonchess.net&threads=4')">
+                        <p class="button-text">Tiểu Trùng 4U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button green-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=saigonchess.net&threads=8')">
+                        <p class="button-text">Tiểu Trùng 8U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button pika-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=pika.saigonchess.net&threads=8')">
+                        <p class="button-text">Fairy Stockfish 8U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button green-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=saigonchess.net&threads=16')">
+                        <p class="button-text">Tiểu Trùng 16U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button pika-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=pika.saigonchess.net&threads=16')">
+                        <p class="button-text">Fairy Stockfish 16U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button red-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=cyc.saigonchess.net&threads=16')">
+                        <p class="button-text">Toàn Phong 16U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button green-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=saigonchess.net&threads=32')">
+                        <p class="button-text">Tiểu Trùng 32U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button pika-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=pika.saigonchess.net&threads=32')">
+                        <p class="button-text">Fairy Stockfish 32U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button red-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=cyc.saigonchess.net&threads=32')">
+                        <p class="button-text">Toàn Phong 32U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button green-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=saigonchess.net&threads=64')">
+                        <p class="button-text">Tiểu Trùng 64U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                    <button class="button red-button" onclick="openUrl('https://saigonchess.net:8086/home.html?site=cyc.saigonchess.net&threads=64')">
+                        <p class="button-text">Toàn Phong 64U</p>
+                        <img src="./swphone/rightIcon.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./swphone/logo.gif" alt="SAIGONCHESS.NET Logo">
+            </div>
+            <p>© 2025 saigonchess.net - Mọi quyền được bảo lưu</p>
+        </div>
+    </footer>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var videoContainer = document.querySelector('.video-container');
+        var playButton = videoContainer.querySelector('.play-button');
+
+        playButton.addEventListener('click', function() {
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', videoContainer.getAttribute('data-yt-url') + '?autoplay=1');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+
+            videoContainer.innerHTML = '';
+            videoContainer.appendChild(iframe);
+        });
+    });
+
+	function openUrl(url) {
+		window.location.href = url + "&code=" + generateRandom16DigitNumber();
+	}
+
+	function generateRandom16DigitNumber() {
+		let num = '';
+		for (let i = 0; i < 16; i++) {
+			num += Math.floor(Math.random() * 10);
+		}
+		return num; // Returns a string
+	}
+
+    </script>
+</body>
+</html>
